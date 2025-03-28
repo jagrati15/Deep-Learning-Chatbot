@@ -17,8 +17,8 @@ if "chat" not in st.session_state:
 def load_pipeline():
     huggingface_token = st.secrets["HUGGINGFACE_TOKEN"]
     model_name = "microsoft/phi-1_5"
-    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=huggingface_token)
-    model = AutoModelForCausalLM.from_pretrained(model_name, use_auth_token=huggingface_token)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, token=huggingface_token)
+    model = AutoModelForCausalLM.from_pretrained(model_name, token=huggingface_token)
     return pipeline("text-generation", model=model, tokenizer=tokenizer)
 
 hf_pipeline = load_pipeline()
