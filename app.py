@@ -12,12 +12,13 @@ st.set_page_config(page_title="Deep Learning Chatbot", layout="centered")
 if "chat" not in st.session_state:
     st.session_state.chat = []
 
-# 🔧 Load phi-1_5
+# 🔧 Load phi-1_5 securely using Hugging Face token
 @st.cache_resource
 def load_pipeline():
+    huggingface_token = st.secrets["HUGGINGFACE_TOKEN"]
     model_name = "microsoft/phi-1_5"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=huggingface_token)
+    model = AutoModelForCausalLM.from_pretrained(model_name, use_auth_token=huggingface_token)
     return pipeline("text-generation", model=model, tokenizer=tokenizer)
 
 hf_pipeline = load_pipeline()
@@ -97,7 +98,7 @@ def chatbot(query):
 st.title("🧠 Deep Learning Chatbot (RAG)")
 st.markdown("💬 Ask me anything about deep learning.")
 
-# 🧾 Input using st.text_input (no reset logic)
+# 🧾 Input using st.text_input
 query = st.text_input("🧠 Ask your question:")
 
 if query:
