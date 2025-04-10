@@ -1,10 +1,5 @@
-streamlit
-transformers
-torch
-sentence-transformers
-faiss-cpu
-wikipedia-api
+streamlit==1.32.2
 transformers==4.37.2
 torch==2.1.2
+sentencepiece
 python-dotenv
-
