@@ -4,3 +4,7 @@ torch
 sentence-transformers
 faiss-cpu
 wikipedia-api
+transformers==4.37.2
+torch==2.1.2
+python-dotenv
+
