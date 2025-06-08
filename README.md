@@ -1,39 +1,37 @@
-# Deep Learning Chatbot (RAG)
+# 🤖 Deep Learning Chatbot (RAG)
 
-This is a Deep Learning-powered chatbot built using Retrieval-Augmented Generation (RAG) architecture. The bot provides answers to questions related to deep learning concepts, such as Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), and Transformers, by retrieving relevant information from Wikipedia articles and generating detailed answers.
+This chatbot answers questions about **Deep Learning** using a lightweight **Retrieval-Augmented Generation (RAG)** pipeline. It fetches relevant Wikipedia text and generates answers using a language model.
 
-## Features
+🔗 **Try it live:** [Deep Learning Chatbot on Hugging Face 🚀](https://huggingface.co/spaces/jagratichauhan15/chatbot)
 
-### Retrieval-Augmented Generation (RAG)
-- Uses a combination of a retrieval model (FAISS) and a generative model (Hugging Face) to provide contextually relevant answers.
+### 🔍 How It Works
 
-### Deep Learning Concepts
-- The bot is trained to respond to queries about deep learning topics like CNNs, RNNs, Transformers, Dropout, and more.
+1. **Wikipedia Retrieval**: On startup, the app fetches a summary of the topic “Deep Learning” from Wikipedia.
+2. **FAISS Indexing**: The text is chunked and indexed using FAISS for fast retrieval.
+3. **Question Answering**: At runtime, user queries are matched to relevant chunks, and passed to a transformer model to generate answers.
 
-### Wikipedia Integration
-- Retrieves information from Wikipedia articles to provide accurate and updated answers.
+### 🧠 Technologies
 
-### Interactive Chat
-- The user can interact with the chatbot by asking questions, and the chatbot will respond with answers.
+- `sentence-transformers` for embedding chunks
+- `faiss-cpu` for similarity search
+- `transformers` + `google/flan-t5-base` for QA generation
+- `gradio` for the web interface
+- `wikipedia` to fetch initial context
 
-### Streamlit Interface
-- A simple web interface to interact with the chatbot.
+### 🚀 Usage
 
-## How It Works
+Click the “Submit” button after typing a question related to deep learning.
 
-1. **User Input**: The user submits a question.
-2. **Context Retrieval**: The chatbot searches relevant Wikipedia articles and retrieves related content using the FAISS index.
-3. **Answer Generation**: A fine-tuned generative model (Phi-1.5 from Hugging Face) generates a detailed and context-aware response.
-4. **Chat History**: The chatbot keeps a history of interactions, which can be accessed from the sidebar.
+Example questions:
+- What is deep learning?
+- What is a neural network used for?
+- What is backpropagation?
 
-## Requirements
+### 📦 Requirements
+* gradio
+* transformers
+* torch
+* sentence-transformers
+* faiss-cpu
+* wikipedia
 
-Make sure you have the following dependencies installed:
-
-```bash
-streamlit
-transformers
-torch
-sentence-transformers
-faiss-cpu
-wikipedia-api
